@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mealsapp/dummy_data.dart';
 
 class MealDetialScreen extends StatelessWidget {
-  static const routname = '/meal-detail';
+  static const rouetname = '/meal-detail';
 
   Widget buildsectionTitle(BuildContext context, String text) {
     return Container(
@@ -68,16 +68,23 @@ class MealDetialScreen extends StatelessWidget {
               return Column(children: [
                 ListTile(
                   leading: CircleAvatar(
+                    backgroundColor: Color.fromARGB(255, 9, 158, 136),
                     child: Text('#${index + 1}'),
                   ),
                   title: Text(selectedMeal.steps[index]),
                 ),
-                Divider()
+                const Divider()
               ]);
             },
             itemCount: selectedMeal.steps.length,
           ))
         ]),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.delete),
+        onPressed: () {
+          Navigator.of(context).pop(mealId);
+        },
       ),
     );
   }
